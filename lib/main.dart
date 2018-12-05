@@ -44,12 +44,11 @@ class MyApp extends StatelessWidget {
               },
             ),
           ],
-          elevation: 100,
+          elevation: 4,
           backgroundColor: Colors.lightBlueAccent,
           brightness: Brightness.dark,
           iconTheme: IconThemeData(color: Colors.yellow,opacity: 2.0,size: 15.2),
           textTheme: TextTheme(title: TextStyle(color: Colors.red),subtitle: TextStyle(color: Colors.red)),
-          primary: ,
           bottom: new PreferredSize(
               child: new Container(
                 child: Row(
