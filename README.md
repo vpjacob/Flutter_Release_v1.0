@@ -6,22 +6,20 @@ A new Flutter application.
 
 
 ## 写在Flutter正式版首发之日
+
+
+
 # Flutter_Release_v1.0
 
-# 功能
+# TODO
 
+- [x] [根据缘起的gitbook生成mobi电子书 ---flutter.mobi](https://github.com/flutterchina/flutter-in-action)
 - [x] 了解Widget的所以的Api
 - [ ] 网络请求
 - [ ] 了解常用的第三方框架
 - [ ] 尝试搭建一个完整APP
 - [ ] 加入Redux管理
 
-
-TODO: 了解Widget的所以的Api
-
-TODO：尝试搭建一个完整APP
-
-TODO：加入Redux管理
 
 ## Appbar Api
 
@@ -152,5 +150,7 @@ appBar: new AppBar(
 
 <div>
     <img src='./image/Screenshot_1543986237.png' width=280>
+    <img src='./image/app_bar.png'>
+   
 </div>
 
