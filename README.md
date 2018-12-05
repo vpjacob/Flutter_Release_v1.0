@@ -2,8 +2,19 @@
 
 A new Flutter application.
 
+- [关于Google Flutter](https://flutterchina.club/)
+
+
 ## 写在Flutter正式版首发之日
 # Flutter_Release_v1.0
+
+# 功能
+
+- [x] 了解Widget的所以的Api
+- [ ] 网络请求
+- [ ] 了解常用的第三方框架
+- [ ] 尝试搭建一个完整APP
+- [ ] 加入Redux管理
 
 
 TODO: 了解Widget的所以的Api
@@ -12,7 +23,7 @@ TODO：尝试搭建一个完整APP
 
 TODO：加入Redux管理
 
-##Appbar Api
+## Appbar Api
 
 
 - this.leading,
@@ -77,7 +88,7 @@ TODO：加入Redux管理
 - this.toolbarOpacity = 1.0,
 - this.bottomOpacity = 1.0,
 
-####appbar example
+#### appbar example
 ```
 appBar: new AppBar(
           title: new Text("title"),
@@ -139,6 +150,7 @@ appBar: new AppBar(
 
 ```
 
-![img](image/Screenshot_1543986237.png)
-
+<div>
+    <img src='./image/Screenshot_1543986237.png' width=280>
+</div>
 
