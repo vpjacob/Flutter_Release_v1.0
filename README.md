@@ -154,3 +154,40 @@ appBar: new AppBar(
    
 </div>
 
+
+## TabController 要区别于 BottomNavigationBar。
+适用于界面中的可以滑动的tab。我要实现的是底部的tabbar。
+
+TabController 可以在底部也可以在顶部，而且可以左右滑动切换界面。下面还有指示图，可以切换颜色
+
+实现起来很简单
+
+```
+      home: new Scaffold(
+        body: new TabBarView(
+          children: [new Home(), new Home()],
+          controller: _controller,
+        ),
+        bottomNavigationBar: new Material(
+          color: Colors.blue,
+          child:
+              new TabBar(controller: _controller, isScrollable: false, tabs: [
+            new Tab(
+              text: '首页',
+              icon: new Icon(Icons.home),
+            ),
+            new Tab(
+              text: '我的',
+              icon: Icon(Icons.mail),
+            )
+          ]),
+        ),
+      ),
+
+
+```
+<div>
+    <img src='./image/Screenshot_1544174987.png' width=280>
+</div>
+
+
