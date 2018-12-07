@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_releases/homeSmall.dart';
 
-class Home extends StatefulWidget{
+class Home extends StatefulWidget {
   @override
   State createState() => HomeState();
-
 }
 
-class HomeState extends State<Home> {
+class HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  TabController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = new TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,7 +29,7 @@ class HomeState extends State<Home> {
           leading: new Icon(Icons.face),
           automaticallyImplyLeading: true,
           flexibleSpace: new FlexibleSpaceBar(
-            centerTitle:true,
+            centerTitle: true,
             title: new Text("flexibleSpace"),
           ),
           actions: <Widget>[
@@ -50,8 +58,11 @@ class HomeState extends State<Home> {
           elevation: 4,
           backgroundColor: Colors.lightBlueAccent,
           brightness: Brightness.dark,
-          iconTheme: IconThemeData(color: Colors.yellow,opacity: 2.0,size: 15.2),
-          textTheme: TextTheme(title: TextStyle(color: Colors.red),subtitle: TextStyle(color: Colors.red)),
+          iconTheme:
+              IconThemeData(color: Colors.yellow, opacity: 2.0, size: 15.2),
+          textTheme: TextTheme(
+              title: TextStyle(color: Colors.red),
+              subtitle: TextStyle(color: Colors.red)),
           bottom: new PreferredSize(
               child: new Container(
                 child: Row(
@@ -71,8 +82,25 @@ class HomeState extends State<Home> {
               ),
               preferredSize: Size(30.0, 30.0)),
         ),
+        body: new TabBarView(
+          children: [new HomeSmall(), new HomeSmall()],
+          controller: _controller,
+        ),
+        bottomNavigationBar: new Material(
+          color: Colors.blue,
+          child:
+              new TabBar(controller: _controller, isScrollable: false, tabs: [
+            new Tab(
+              text: 'tab1',
+              icon: new Icon(Icons.home),
+            ),
+            new Tab(
+              text: 'tab2',
+              icon: Icon(Icons.mail),
+            )
+          ]),
+        ),
       ),
     );
   }
-
 }

@@ -191,3 +191,30 @@ TabController 可以在底部也可以在顶部，而且可以左右滑动切换
 </div>
 
 
+## BottomNavigationBar。
+
+```
+      home: new Scaffold(
+        body: _pageList[_tabIndex],
+        bottomNavigationBar: new BottomNavigationBar(
+          items: [
+            new BottomNavigationBarItem(
+                icon: Icon(Icons.face), title: Text(appBarTitles[0])),
+            new BottomNavigationBarItem(
+                icon: Icon(Icons.face), title: Text(appBarTitles[1])),
+            new BottomNavigationBarItem(
+                icon: Icon(Icons.face), title: Text(appBarTitles[2])),
+          ],
+          currentIndex: _tabIndex,
+          onTap: (index) {
+            setState(() {
+              _tabIndex = index;
+            });
+          },
+          iconSize: 24.0,
+          type: BottomNavigationBarType.fixed,
+        ),
+      ),
+
+
+```

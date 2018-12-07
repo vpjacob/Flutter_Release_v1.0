@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_releases/home.dart';
+import 'package:flutter_releases/mine.dart';
+import 'package:flutter_releases/find.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,36 +11,37 @@ class MyApp extends StatefulWidget {
 }
 
 class HomeState extends State<MyApp> with SingleTickerProviderStateMixin {
-  TabController _controller;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = new TabController(length: 2, vsync: this);
+  int _tabIndex = 0;
+  var appBarTitles = ['首页', '发现', '我的'];
+  var _pageList;
+  void initData() {
+    _pageList = [new Home(), new Find(), new Mine()];
   }
 
   @override
   Widget build(BuildContext context) {
+    initData();
     // TODO: implement build
     return new MaterialApp(
       home: new Scaffold(
-        body: new TabBarView(
-          children: [new Home(), new Home()],
-          controller: _controller,
-        ),
-        bottomNavigationBar: new Material(
-          color: Colors.blue,
-          child:
-              new TabBar(controller: _controller, isScrollable: false, tabs: [
-            new Tab(
-              text: '首页',
-              icon: new Icon(Icons.home),
-            ),
-            new Tab(
-              text: '我的',
-              icon: Icon(Icons.mail),
-            )
-          ]),
+        body: _pageList[_tabIndex],
+        bottomNavigationBar: new BottomNavigationBar(
+          items: [
+            new BottomNavigationBarItem(
+                icon: Icon(Icons.face), title: Text(appBarTitles[0])),
+            new BottomNavigationBarItem(
+                icon: Icon(Icons.face), title: Text(appBarTitles[1])),
+            new BottomNavigationBarItem(
+                icon: Icon(Icons.face), title: Text(appBarTitles[2])),
+          ],
+          currentIndex: _tabIndex,
+          onTap: (index) {
+            setState(() {
+              _tabIndex = index;
+            });
+          },
+          iconSize: 24.0,
+          type: BottomNavigationBarType.fixed,
         ),
       ),
     );
