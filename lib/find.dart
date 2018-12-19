@@ -19,7 +19,14 @@ class HomeState extends State<Find> with SingleTickerProviderStateMixin {
             centerTitle: true, // 是否让title居中
             leading: new Icon(Icons.face),
           ),
-          body: new Text('Find')),
+          body: new ListView.builder(
+              itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text('$index'),
+            );
+          },
+          itemCount: 100,
+          )),
     );
   }
 }
