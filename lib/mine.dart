@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 //import 'package:video_player/video_player.dart';
+import 'package:flutter_releases/states/home_state.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 class Mine extends StatefulWidget {
   @override
@@ -7,28 +9,6 @@ class Mine extends StatefulWidget {
 }
 
 class MineState extends State<Mine> with SingleTickerProviderStateMixin {
-//  VideoPlayerController _controller;
-//  bool _isPlaying = false;
-
-//  @override
-//  void initState() {
-//    super.initState();
-//    _controller = VideoPlayerController.network(
-//        'http://static.smartisanos.cn/common/video/proud-farmer.mp4');
-//
-//    _controller.addListener(() {
-//      final bool isPlaying = _controller.value.isPlaying;
-//      if (isPlaying != _isPlaying) {
-//        setState(() {
-//          _isPlaying = isPlaying;
-//        });
-//      }
-//    });
-//
-//    _controller.initialize().then((_) {
-//      setState(() {});
-//    });
-//  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,19 +24,34 @@ class MineState extends State<Mine> with SingleTickerProviderStateMixin {
           leading: new Icon(Icons.face),
           automaticallyImplyLeading: true,
         ),
-//        body: Center(
-//            child: _controller.value.initialized
-//                ? AspectRatio(
-//                    aspectRatio: _controller.value.aspectRatio,
-//                    child: VideoPlayer(_controller),
-//                  )
-//                : Container()),
-//        floatingActionButton: FloatingActionButton(
-//          onPressed: _controller.value.isPlaying
-//              ? _controller.pause
-//              : _controller.play,
-//          child: Icon(_controller.value.isPlaying?Icons.pause:Icons.play_arrow),
-//        ),
+        body: Center(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Text('youhave poushed may time'),
+              StoreConnector<CountState,int>(
+                converter: (store)=>store.state.count,
+                builder: (context,count){
+                  return Text(
+                    count.toString(),
+                    style: Theme.of(context).textTheme.display1,
+                  );
+                },
+              )
+            ],
+          ),
+        ),
+        floatingActionButton: StoreConnector<CountState,VoidCallback>(
+            builder: (context,callback){
+              return FloatingActionButton(
+                onPressed: callback,
+                child: Icon(Icons.add),
+              );
+            },
+            converter: (store){
+              return ()=> store.dispatch(Action.increment);
+            }
+        ),
       ),
     );
   }
